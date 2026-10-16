@@ -461,7 +461,7 @@ export default function Home() {
           <a href="#explore">Explore Migra</a>
           <a href="#trust">Trust</a>
         </div>
-        <a className="btn dark desktop" href="#start">
+        <a className="btn dark desktop" href="/assessment">
           Check my options
         </a>
         <button className="menu" onClick={() => setMenu(!menu)}>
@@ -479,7 +479,7 @@ export default function Home() {
             <a href="#about">What is Migra</a>
             <a href="#how">How it works</a>
             <a href="#explore">Explore Migra</a>
-            <a className="btn dark" href="#start">
+            <a className="btn dark" href="/assessment">
               Check my options
             </a>
           </motion.div>
@@ -501,7 +501,7 @@ export default function Home() {
           Find realistic routes, see what they require and know your next move.
         </p>
         <div className="actions">
-          <a className="btn dark" href="#start">
+          <a className="btn dark" href="/assessment">
             Check my options <ArrowRight />
           </a>
           <a className="btn white" href="#how">
@@ -819,7 +819,7 @@ export default function Home() {
             Migra surfaces its evidence, uncertainty and limits so useful
             guidance never pretends to be a guarantee.
           </p>
-          <a className="btn white" href="#start">
+          <a className="btn white" href="/assessment">
             Check my options <ArrowRight />
           </a>
         </div>
@@ -875,7 +875,7 @@ export default function Home() {
             Build your profile and see the routes worth exploring before you
             spend money.
           </p>
-          <a className="btn dark" href="#top">
+          <a className="btn dark" href="/assessment">
             Check my options <ArrowRight />
           </a>
         </div>
