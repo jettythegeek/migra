@@ -130,8 +130,9 @@
   place-items: center;
   flex: none;
   border-radius: 14px;
-  background: var(--teal);
-  color: var(--navy);
+  background: #eef8f7;
+  font-size: 23px;
+  line-height: 1;
 }
 .destination-title h3 {
   margin: 0;

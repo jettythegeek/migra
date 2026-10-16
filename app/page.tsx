@@ -23,7 +23,6 @@ import {
   ArrowRight as PhosphorArrowRight,
   Briefcase as PhosphorBriefcase,
   GraduationCap as PhosphorGraduationCap,
-  MapPin,
   UsersThree,
 } from "@phosphor-icons/react";
 import { AnimatePresence, motion } from "motion/react";
@@ -59,10 +58,12 @@ const paths = [
 const destinations = [
   {
     country: "Canada",
+    flag: "🇨🇦",
     routes: [{ type: "Work", name: "Skilled Worker Pathway" }],
   },
   {
     country: "United Kingdom",
+    flag: "🇬🇧",
     routes: [
       { type: "Work", name: "Skilled Worker Route" },
       { type: "Family", name: "Family Route" },
@@ -70,6 +71,7 @@ const destinations = [
   },
   {
     country: "Ireland",
+    flag: "🇮🇪",
     routes: [
       { type: "Work", name: "Critical Skills Employment Permit" },
       { type: "Study", name: "Study Route" },
@@ -77,10 +79,12 @@ const destinations = [
   },
   {
     country: "Sweden",
+    flag: "🇸🇪",
     routes: [{ type: "Work", name: "Work Permit Route" }],
   },
   {
     country: "Australia",
+    flag: "🇦🇺",
     routes: [
       { type: "Work", name: "Skilled Independent Visa" },
       { type: "Study", name: "Study Route" },
@@ -88,10 +92,12 @@ const destinations = [
   },
   {
     country: "Netherlands",
+    flag: "🇳🇱",
     routes: [{ type: "Work", name: "Highly Skilled Migrant Route" }],
   },
   {
     country: "Estonia",
+    flag: "🇪🇪",
     routes: [{ type: "Work", name: "Work Permit Route" }],
   },
 ];
@@ -659,7 +665,7 @@ export default function Home() {
           <header className="destinations-head">
             <div>
               <span>WHERE COULD YOU GO?</span>
-              <h2>Real routes. Real places. A clearer next move.</h2>
+              <h2>See where your profile could take you.</h2>
             </div>
             <p>
               Explore the work, study and family pathways Migra currently
@@ -678,9 +684,7 @@ export default function Home() {
                 {destinations.map((destination) => (
                   <article key={destination.country}>
                     <div className="destination-title">
-                      <span>
-                        <MapPin size={23} weight="duotone" />
-                      </span>
+                      <span>{destination.flag}</span>
                       <h3>{destination.country}</h3>
                     </div>
                     <div className="destination-routes">
