@@ -23,7 +23,10 @@ import {
   ArrowRight as PhosphorArrowRight,
   Briefcase as PhosphorBriefcase,
   GraduationCap as PhosphorGraduationCap,
+  InstagramLogo,
+  LinkedinLogo,
   UsersThree,
+  XLogo,
 } from "@phosphor-icons/react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
@@ -926,7 +929,18 @@ export default function Home() {
           </div>
         </div>
         <div className="wrap foot">
-          © 2026 Migra <span>Guidance, not guarantees.</span>
+          © 2026 Migra
+          <div className="footer-social" aria-label="Migra social media">
+            <span title="Instagram">
+              <InstagramLogo size={18} weight="fill" />
+            </span>
+            <span title="LinkedIn">
+              <LinkedinLogo size={18} weight="fill" />
+            </span>
+            <span title="X">
+              <XLogo size={18} weight="bold" />
+            </span>
+          </div>
         </div>
       </footer>
     </main>
