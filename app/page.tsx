@@ -21,8 +21,12 @@ import {
 } from "lucide-react";
 import {
   ArrowRight as PhosphorArrowRight,
+  Briefcase as PhosphorBriefcase,
   Compass,
+  GraduationCap as PhosphorGraduationCap,
   ListChecks,
+  MapPin,
+  UsersThree,
   Wallet,
 } from "@phosphor-icons/react";
 import { AnimatePresence, motion } from "motion/react";
@@ -52,6 +56,46 @@ const paths = [
     text: "Start with your priorities",
     icon: Search,
     score: "3 routes",
+  },
+];
+
+const destinations = [
+  {
+    country: "Canada",
+    routes: [{ type: "Work", name: "Skilled Worker Pathway" }],
+  },
+  {
+    country: "United Kingdom",
+    routes: [
+      { type: "Work", name: "Skilled Worker Route" },
+      { type: "Family", name: "Family Route" },
+    ],
+  },
+  {
+    country: "Ireland",
+    routes: [
+      { type: "Work", name: "Critical Skills Employment Permit" },
+      { type: "Study", name: "Study Route" },
+    ],
+  },
+  {
+    country: "Sweden",
+    routes: [{ type: "Work", name: "Work Permit Route" }],
+  },
+  {
+    country: "Australia",
+    routes: [
+      { type: "Work", name: "Skilled Independent Visa" },
+      { type: "Study", name: "Study Route" },
+    ],
+  },
+  {
+    country: "Netherlands",
+    routes: [{ type: "Work", name: "Highly Skilled Migrant Route" }],
+  },
+  {
+    country: "Estonia",
+    routes: [{ type: "Work", name: "Work Permit Route" }],
   },
 ];
 const faqs = [
@@ -549,6 +593,62 @@ export default function Home() {
             </span>
             <h3>Move in order</h3>
             <p>Do the right task at the right time.</p>
+          </div>
+        </div>
+      </section>
+      <section className="destinations" id="destinations">
+        <div className="wrap">
+          <header className="destinations-head">
+            <div>
+              <span>POPULAR DESTINATIONS</span>
+              <h2>Migration pathways we actively support</h2>
+            </div>
+            <p>
+              Real programs our specialists work with today — message us and
+              we&apos;ll confirm what fits your profile.
+            </p>
+          </header>
+          <div className="destination-grid">
+            {destinations.map((destination, index) => (
+              <article
+                className={index < 3 ? "destination-featured" : ""}
+                key={destination.country}
+              >
+                <div className="destination-title">
+                  <span>
+                    <MapPin size={23} weight="duotone" />
+                  </span>
+                  <h3>{destination.country}</h3>
+                </div>
+                <div className="destination-routes">
+                  {destination.routes.map((route) => {
+                    const RouteIcon =
+                      route.type === "Study"
+                        ? PhosphorGraduationCap
+                        : route.type === "Family"
+                          ? UsersThree
+                          : PhosphorBriefcase;
+                    return (
+                      <div key={route.name}>
+                        <RouteIcon size={19} weight="duotone" />
+                        <p>
+                          <small>{route.type}</small>
+                          <b>{route.name}</b>
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+                <a
+                  href="https://wa.me/2348153955718?text=Hi%2C%20I%27d%20like%20to%20ask%20about%20my%20migration%20eligibility."
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Ask about eligibility
+                  <PhosphorArrowRight size={17} weight="bold" />
+                </a>
+              </article>
+            ))}
           </div>
         </div>
       </section>
