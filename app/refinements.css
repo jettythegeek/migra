@@ -9,11 +9,11 @@
   position: relative;
   border-radius: 36px;
   overflow: hidden;
-  background: var(--soft);
+  background: transparent;
 }
 .about-editorial img {
-  object-fit: contain;
-  padding: 22px;
+  object-fit: cover;
+  padding: 0;
 }
 .about-editorial:after,
 .about-editorial i {

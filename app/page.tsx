@@ -539,8 +539,8 @@ export default function Home() {
           </div>
           <div className="about-editorial">
             <Image
-              src="/migra-about-cutout-v5.png"
-              alt="A Nigerian professional planning her migration journey"
+              src="/migra-clarity-planning-v6.png"
+              alt="A Nigerian professional exploring international migration options"
               fill
               sizes="48vw"
             />
