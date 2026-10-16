@@ -521,7 +521,7 @@ export default function Home() {
         <div className="about-top">
           <div className="lead">
             <span>ABOUT</span>
-            <h2>Get clear before you commit.</h2>
+            <h2>Migration, without the confusion.</h2>
             <p>
               Migration advice is scattered across search results, social media
               and sales calls. Migra brings your options, requirements and next
@@ -539,7 +539,6 @@ export default function Home() {
               sizes="48vw"
             />
             <i />
-            <b>Plan before you pay.</b>
           </div>
         </div>
         <div className="path-stage">
