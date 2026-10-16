@@ -821,48 +821,49 @@ export default function Home() {
       </section>
       <section className="trust" id="trust">
         <div>
-          <span>TRUST, BUILT IN</span>
-          <h2>Every answer should show its work.</h2>
+          <span>CLEAR ANSWERS. HONEST LIMITS.</span>
+          <h2>Know why a route fits before you act on it.</h2>
           <p>
-            Migra surfaces its evidence, uncertainty and limits so useful
-            guidance never pretends to be a guarantee.
+            Migra shows you what supports each recommendation, what still needs
+            checking and which official rules it is based on—so you can decide
+            with your eyes open.
           </p>
           <a className="btn white" href="/assessment">
-            Check my options <ArrowRight />
+            See what fits me <ArrowRight />
           </a>
         </div>
         <div className="evidence">
           <header>
             <ShieldCheck />
             <span>
-              <b>Why this route?</b>
-              <small>Evidence behind the recommendation</small>
+              <b>Why Migra suggested this</b>
+              <small>How this recommendation was made</small>
             </span>
-            <em>ILLUSTRATIVE</em>
+            <em>SAMPLE RESULT</em>
           </header>
           <h3>
-            Your experience supports this route. Your language score still needs
-            confirmation.
+            Your work experience strengthens this option. Your language score
+            could still change the result.
           </h3>
           <label>
             <BadgeCheck />
             <span>
-              <b>Official programme criteria</b>
-              <small>Primary source</small>
+              <b>Rules checked</b>
+              <small>Matched against official programme requirements</small>
             </span>
           </label>
           <label>
             <FileCheck2 />
             <span>
-              <b>Your profile</b>
-              <small>8 factors considered</small>
+              <b>What you told us</b>
+              <small>8 details from your profile shaped this result</small>
             </span>
           </label>
           <label className="uncertain">
             <CircleAlert />
             <span>
-              <b>Still uncertain</b>
-              <small>Language and credential results</small>
+              <b>What needs confirming</b>
+              <small>Your language score and credential assessment</small>
             </span>
           </label>
         </div>
