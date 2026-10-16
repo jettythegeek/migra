@@ -921,7 +921,6 @@ export default function Home() {
           />
         </div>
         <div>
-          <Image src="/migra-logo.png" alt="Migra" width={146} height={24} />
           <h2>Your next move starts with a clearer answer.</h2>
           <p>
             Build your profile and see the routes worth exploring before you

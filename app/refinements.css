@@ -36,7 +36,7 @@
   display: block;
 }
 .destinations {
-  padding: 120px 0 130px;
+  padding: 64px 0 80px;
   overflow: hidden;
   background: #f4faf9;
   color: var(--navy);
@@ -416,7 +416,7 @@
 .feature-showcase {
   display: grid;
   gap: 34px;
-  padding-bottom: 34px;
+  padding-bottom: 0;
 }
 .feature-showcase article {
   min-height: 540px;
@@ -631,13 +631,48 @@
     gap: 40px;
   }
   .about-editorial {
-    height: 500px;
+    height: auto;
+    aspect-ratio: 3 / 2;
   }
   .steps .custom-art {
     height: 350px;
   }
   .start-product {
-    height: 430px;
+    height: auto;
+    aspect-ratio: 3 / 2;
+  }
+  /* Keep stacked illustrations sized to their artwork, with copy nearby. */
+  .family {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+  .family > div {
+    min-width: 0;
+  }
+  .stage-photo,
+  .family-photo {
+    height: auto;
+    aspect-ratio: 3 / 2;
+  }
+  .feature-visual img,
+  .stage-photo img,
+  .family-photo > img,
+  .start-product img {
+    padding: 0;
+  }
+  .family > div:last-child {
+    padding: 28px 32px 40px;
+  }
+  .start {
+    min-height: 0;
+    gap: 0;
+    padding: 0;
+  }
+  .start > div:nth-child(2) {
+    padding: 20px 32px 36px;
+  }
+  .start h2 {
+    margin-top: 0;
   }
 }
 @media (max-width: 900px) {
@@ -660,12 +695,13 @@
   .feature-copy,
   .feature-reverse .feature-copy {
     order: 2;
-    padding: 42px;
+    padding: 20px 32px 32px;
   }
   .feature-visual,
   .feature-reverse .feature-visual {
     order: 1;
-    min-height: 420px;
+    min-height: 0;
+    aspect-ratio: 8 / 5;
   }
 }
 @media (max-width: 900px) {
@@ -683,7 +719,7 @@
     grid-template-columns: 1fr;
   }
   .how-visual {
-    height: 440px;
+    height: clamp(240px, 45vw, 340px);
   }
   .why-scroll article {
     grid-template-columns: 1fr;
@@ -698,10 +734,9 @@
 }
 @media (max-width: 620px) {
   .about-top {
-    gap: 30px;
+    gap: 24px;
   }
   .about-editorial {
-    height: 390px;
     border-radius: 24px;
   }
   .steps .custom-art {
@@ -714,7 +749,7 @@
     height: 245px;
   }
   .start-product {
-    height: 330px;
+    height: auto;
   }
   .start-product img {
     object-position: 35% center;
@@ -787,7 +822,7 @@
 }
 @media (max-width: 620px) {
   .destinations {
-    padding: 78px 0;
+    padding: 40px 0 56px;
   }
   .destinations-head {
     margin-bottom: 34px;
@@ -807,22 +842,22 @@
 }
 @media (max-width: 620px) {
   .about {
-    padding: 76px 0 28px;
+    padding: 56px 0 24px;
   }
   .explore {
-    padding: 48px 0 76px;
+    padding: 32px 0 40px;
   }
   .how {
-    padding: 76px 0 68px;
+    padding: 56px 0;
   }
   .why {
     padding-block: 76px;
   }
   .start {
-    margin-top: 72px;
+    margin-top: 56px;
   }
   .faq {
-    padding-block: 88px;
+    padding-block: 56px;
   }
 }
 @media (max-width: 620px) {
@@ -851,13 +886,13 @@
   }
   .feature-visual,
   .feature-reverse .feature-visual {
-    min-height: 300px;
+    min-height: 0;
     margin: 10px;
     border-radius: 17px;
   }
   .feature-copy,
   .feature-reverse .feature-copy {
-    padding: 34px 28px 38px;
+    padding: 12px 24px 28px;
   }
   .feature-copy h3 {
     font-size: 31px;
@@ -866,10 +901,29 @@
     margin-top: 34px;
   }
   .how-visual {
-    height: 300px;
+    height: clamp(220px, 65vw, 300px);
   }
   .how-grid h3 {
     font-size: 22px;
+  }
+  .how-visual img {
+    padding: 4px;
+  }
+  .how-grid article > span {
+    margin-top: 14px;
+  }
+  .path-stage {
+    margin-top: 28px;
+  }
+  .family > div:last-child {
+    padding: 24px 24px 32px;
+  }
+  .family h2 {
+    font-size: 38px;
+    margin-top: 12px;
+  }
+  .start > div:nth-child(2) {
+    padding: 16px 24px 32px;
   }
   .why-scroll {
     margin: 0;

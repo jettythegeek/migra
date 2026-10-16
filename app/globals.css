@@ -68,6 +68,7 @@ button {
 }
 .white {
   background: white;
+  color: var(--navy);
   border-color: var(--line);
 }
 .teal {
@@ -601,7 +602,7 @@ button {
   transform: rotate(-7deg);
 }
 .explore {
-  padding: 68px 0 130px;
+  padding: 68px 0 48px;
 }
 .explore > header {
   display: flex;

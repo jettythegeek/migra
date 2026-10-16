@@ -5,17 +5,12 @@ import Link from "next/link";
 import {
   ArrowLeft,
   ArrowRight,
-  BriefcaseBusiness,
   Check,
   CheckCircle2,
   FileText,
-  GraduationCap,
   LockKeyhole,
-  MapPin,
-  ShieldCheck,
   Sparkles,
   UploadCloud,
-  Users,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
@@ -50,25 +45,25 @@ const goals = [
     value: "work",
     label: "Build my career",
     note: "I want to work abroad",
-    icon: BriefcaseBusiness,
+    illustration: "/assessment-career-male.png",
   },
   {
     value: "study",
     label: "Study and grow",
     note: "I am exploring education",
-    icon: GraduationCap,
+    illustration: "/assessment-study.png",
   },
   {
     value: "family",
     label: "Move with family",
     note: "We are planning together",
-    icon: Users,
+    illustration: "/assessment-family.png",
   },
   {
     value: "explore",
     label: "Show me what fits",
     note: "I am keeping an open mind",
-    icon: MapPin,
+    illustration: "/assessment-explore-male.png",
   },
 ];
 
@@ -82,7 +77,7 @@ const processingLines = [
 const matches = [
   {
     country: "Canada",
-    flag: "🇨🇦",
+    flagCode: "ca",
     route: "Express Entry",
     score: 86,
     label: "Strong starting point",
@@ -94,7 +89,7 @@ const matches = [
   },
   {
     country: "United Kingdom",
-    flag: "🇬🇧",
+    flagCode: "gb",
     route: "Skilled Worker",
     score: 78,
     label: "Worth exploring",
@@ -106,7 +101,7 @@ const matches = [
   },
   {
     country: "Ireland",
-    flag: "🇮🇪",
+    flagCode: "ie",
     route: "Critical Skills",
     score: 72,
     label: "Possible alternative",
@@ -117,6 +112,34 @@ const matches = [
     ],
   },
 ];
+
+function ReportCelebration() {
+  const [celebrating, setCelebrating] = useState(true);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setCelebrating(false), 6000);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  return celebrating ? (
+    <div className="confetti" aria-hidden="true">
+      {Array.from({ length: 150 }, (_, index) => (
+        <i
+          key={index}
+          style={
+            {
+              left: `${(index * 29) % 100}%`,
+              "--drift": `${((index * 37) % 241) - 120}px`,
+              "--spin": `${index % 2 ? 900 : -720}deg`,
+              animationDuration: `${3 + (index % 7) * 0.25}s`,
+              animationDelay: `${(index % 11) * 0.07}s`,
+            } as React.CSSProperties
+          }
+        />
+      ))}
+    </div>
+  ) : null;
+}
 
 function AnimatedScore({ score }: { score: number }) {
   const [value, setValue] = useState(0);
@@ -147,7 +170,15 @@ export default function AssessmentPage() {
   const [upload, setUpload] = useState({ name: "", progress: 0, done: false });
   const [processing, setProcessing] = useState(0);
   const [showResults, setShowResults] = useState(false);
+  const [returningToResults, setReturningToResults] = useState(false);
   const uploadTimer = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("view") === "results") {
+      setReturningToResults(true);
+      setShowResults(true);
+    }
+  }, []);
 
   const progress = showResults ? 100 : Math.min(((step + 1) / 4) * 100, 100);
   const valid =
@@ -216,20 +247,7 @@ export default function AssessmentPage() {
   if (showResults) {
     return (
       <main className="assessment-shell results-shell">
-        <div className="confetti" aria-hidden="true">
-          {Array.from({ length: 90 }).map((_, index) => (
-            <i
-              key={index}
-              style={
-                {
-                  "--i": index,
-                  left: `${(index * 29) % 100}%`,
-                  "--drift": `${((index * 37) % 121) - 60}px`,
-                } as React.CSSProperties
-              }
-            />
-          ))}
-        </div>
+        {!returningToResults && <ReportCelebration />}
         <header className="assessment-nav">
           <Link href="/" aria-label="Return to Migra home">
             <Image
@@ -240,9 +258,6 @@ export default function AssessmentPage() {
               priority
             />
           </Link>
-          <span className="privacy-pill">
-            <ShieldCheck size={16} /> Illustrative preview
-          </span>
         </header>
         <section className="results wrap">
           <motion.div
@@ -250,14 +265,21 @@ export default function AssessmentPage() {
             animate={{ opacity: 1, y: 0 }}
             className="result-intro"
           >
-            <span>
-              <Sparkles size={17} /> Your starting points are ready
-            </span>
+            <svg
+              className="report-success"
+              viewBox="0 0 100 100"
+              role="img"
+              aria-label="Assessment complete"
+            >
+              <circle className="success-halo" cx="50" cy="50" r="46" />
+              <circle className="success-ring" cx="50" cy="50" r="35" pathLength="1" />
+              <path className="success-check" d="m33 50 12 12 23-25" pathLength="1" />
+            </svg>
             <h1>You have options worth exploring.</h1>
             <p>
-              Based on what you shared, these routes deserve a closer look. This
-              preview uses a predetermined result to show how Migra will explain
-              your options—not to confirm eligibility.
+              A big move starts with knowing what to explore. Take a closer look
+              at these routes, then open your dashboard to check what each one
+              needs and work out your next step.
             </p>
           </motion.div>
           <div className="match-grid">
@@ -270,7 +292,14 @@ export default function AssessmentPage() {
                 transition={{ delay: 0.22 + index * 0.14 }}
               >
                 <header>
-                  <span className="match-flag">{match.flag}</span>
+                  <span className="match-flag">
+                    <img
+                      src={`https://flagcdn.com/w80/${match.flagCode}.png`}
+                      alt={`${match.country} flag`}
+                      width="40"
+                      height="27"
+                    />
+                  </span>
                   <div>
                     <small>{match.label}</small>
                     <h2>{match.country}</h2>
@@ -292,36 +321,37 @@ export default function AssessmentPage() {
                     </p>
                   ))}
                 </div>
-                <button>
+                <Link href={`/dashboard?route=${match.flagCode}`}>
                   See the full breakdown <ArrowRight size={17} />
-                </button>
+                </Link>
               </motion.article>
             ))}
           </div>
           <section className="next-action">
             <div>
-              <span>YOUR NEXT BEST ACTION</span>
-              <h2>Confirm the details that could change your result.</h2>
+              <span>FROM POSSIBILITIES TO A PLAN</span>
+              <h2>You don’t have to figure it all out today.</h2>
               <p>
-                Language scores, occupation codes and document evidence can
-                materially affect pathway fit.
+                Start with the route you want to understand better. Your
+                dashboard brings the requirements, documents and next steps
+                together, so you can tackle one thing at a time.
               </p>
             </div>
             <div className="next-checklist">
               <p>
                 <span>1</span>
-                <b>Check your occupation code</b>
-                <small>Make sure your experience maps correctly.</small>
+                <b>Get to know your route</b>
+                <small>Open the full breakdown to see what the route asks for and which details you need to check.</small>
               </p>
               <p>
                 <span>2</span>
-                <b>Plan your language test</b>
-                <small>A verified score makes the assessment sharper.</small>
+                <b>See what you already have</b>
+                <small>Use your document checklist to track what’s ready and what you still need to gather.</small>
               </p>
               <p>
                 <span>3</span>
-                <b>Review with a specialist</b>
-                <small>Confirm the assumptions before spending money.</small>
+                <b>Take the next step at your pace</b>
+                <small>Start at Assess, then move into Prepare when you’re ready to build your plan.</small>
               </p>
             </div>
           </section>
@@ -340,7 +370,9 @@ export default function AssessmentPage() {
                 setUpload({ name: "", progress: 0, done: false });
                 setProcessing(0);
                 setShowResults(false);
+                setReturningToResults(false);
                 setStep(0);
+                window.history.replaceState(null, "", "/assessment");
               }}
             >
               Start again
@@ -425,21 +457,10 @@ export default function AssessmentPage() {
       <section className="assessment-stage">
         <aside className="assessment-aside">
           <div>
-            <span>YOUR MIGRA PREVIEW</span>
             <h2>Let’s understand the move you have in mind.</h2>
             <p>
               You do not need perfect answers. Share what you know today and you
               can update it later.
-            </p>
-          </div>
-          <div className="aside-trust">
-            <ShieldCheck size={22} />
-            <p>
-              <b>This is a safe demo.</b>
-              <small>
-                Your answers and files stay in this browser and are not
-                submitted anywhere.
-              </small>
             </p>
           </div>
         </aside>
@@ -460,14 +481,15 @@ export default function AssessmentPage() {
                     place to begin.
                   </p>
                   <div className="choice-grid">
-                    {goals.map(({ value, label, note, icon: Icon }) => (
+                    {goals.map(({ value, label, note, illustration }) => (
                       <button
                         className={answers.goal === value ? "selected" : ""}
                         onClick={() => update("goal", value)}
+                        aria-pressed={answers.goal === value}
                         key={value}
                       >
-                        <span>
-                          <Icon size={22} />
+                        <span className="choice-illustration">
+                          <Image src={illustration} alt="" width={112} height={112} sizes="112px" />
                         </span>
                         <b>{label}</b>
                         <small>{note}</small>
