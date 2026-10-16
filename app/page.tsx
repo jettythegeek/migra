@@ -363,7 +363,7 @@ function Phone({ view = "home" }: { view?: "home" | "route" | "plan" }) {
     <div className="phone">
       <i className="notch" />
       <header>
-        <Image src="/migra-logo.png" alt="" width={75} height={22} />
+        <Image src="/migra-logo.png" alt="" width={92} height={15} />
         <b>AO</b>
       </header>
       {view === "home" && (
@@ -451,7 +451,7 @@ export default function Home() {
   return (
     <main>
       <nav className="nav wrap">
-        <Image src="/migra-logo.png" alt="Migra" width={128} height={38} />
+        <Image src="/migra-logo.png" alt="Migra" width={146} height={24} />
         <div>
           <a href="#about">What is Migra</a>
           <a href="#how">How it works</a>
@@ -866,7 +866,7 @@ export default function Home() {
           />
         </div>
         <div>
-          <Image src="/migra-logo.png" alt="Migra" width={125} height={38} />
+          <Image src="/migra-logo.png" alt="Migra" width={146} height={24} />
           <h2>Your next move starts with a clearer answer.</h2>
           <p>
             Build your profile and see the routes worth exploring before you
@@ -904,7 +904,7 @@ export default function Home() {
       <footer>
         <div className="wrap footer-grid">
           <div>
-            <Image src="/migra-logo.png" alt="Migra" width={130} height={40} />
+            <Image src="/migra-logo.png" alt="Migra" width={146} height={24} />
             <p>Migration intelligence for Africans.</p>
           </div>
           <div>
