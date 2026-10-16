@@ -22,12 +22,9 @@ import {
 import {
   ArrowRight as PhosphorArrowRight,
   Briefcase as PhosphorBriefcase,
-  Compass,
   GraduationCap as PhosphorGraduationCap,
-  ListChecks,
   MapPin,
   UsersThree,
-  Wallet,
 } from "@phosphor-icons/react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
@@ -569,29 +566,6 @@ export default function Home() {
                 </button>
               );
             })}
-          </div>
-        </div>
-        <div className="benefits">
-          <div>
-            <span className="benefit-icon">
-              <Compass size={48} weight="duotone" />
-            </span>
-            <h3>Find your routes</h3>
-            <p>See which pathways fit your profile and why.</p>
-          </div>
-          <div>
-            <span className="benefit-icon">
-              <Wallet size={48} weight="duotone" />
-            </span>
-            <h3>Know the full cost</h3>
-            <p>Plan beyond the application fee.</p>
-          </div>
-          <div>
-            <span className="benefit-icon">
-              <ListChecks size={48} weight="duotone" />
-            </span>
-            <h3>Move in order</h3>
-            <p>Do the right task at the right time.</p>
           </div>
         </div>
       </section>

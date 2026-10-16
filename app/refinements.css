@@ -30,37 +30,10 @@
   border-radius: 99px;
   padding: 12px 18px;
 }
-.benefits > div {
-  background: var(--soft);
-  border-radius: 28px;
-  padding: 14px 22px 28px;
-}
-.benefit-icon {
-  width: 86px;
-  height: 86px;
-  margin: 28px 8px 20px;
-  border-radius: 24px;
-  display: grid;
-  place-items: center;
-  background: var(--mint);
-  color: var(--navy);
-}
-.benefit-icon svg {
-  width: 48px;
-  height: 48px;
-  color: var(--navy);
-}
 .custom-art {
   width: 100%;
   height: auto;
   display: block;
-}
-.benefits .custom-art {
-  height: 225px;
-}
-.benefits h3,
-.benefits p {
-  padding-inline: 8px;
 }
 .destinations {
   padding: 120px 0 130px;
@@ -623,9 +596,6 @@
   .about-editorial {
     height: 500px;
   }
-  .benefits .custom-art {
-    height: 190px;
-  }
   .steps .custom-art {
     height: 350px;
   }
@@ -694,12 +664,6 @@
   .about-editorial {
     height: 390px;
     border-radius: 24px;
-  }
-  .benefits > div {
-    padding: 12px 18px 25px;
-  }
-  .benefits .custom-art {
-    height: 230px;
   }
   .steps .custom-art {
     height: 280px;
@@ -823,11 +787,6 @@
   }
 }
 @media (max-width: 620px) {
-  .benefit-icon {
-    width: 76px;
-    height: 76px;
-    margin: 22px 8px 16px;
-  }
   .explore > header {
     display: flex;
     flex-direction: column;
