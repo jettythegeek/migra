@@ -402,7 +402,7 @@ button {
   color: var(--teal2);
 }
 .about {
-  padding: 145px 0 120px;
+  padding: 145px 0 38px;
 }
 .lead {
   max-width: 700px;
@@ -601,7 +601,7 @@ button {
   transform: rotate(-7deg);
 }
 .explore {
-  padding: 130px 0;
+  padding: 68px 0 130px;
 }
 .explore > header {
   display: flex;

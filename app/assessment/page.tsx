@@ -192,7 +192,10 @@ export default function AssessmentPage() {
       setProcessing(index);
       if (index >= processingLines.length) {
         window.clearInterval(timer);
-        window.setTimeout(() => setShowResults(true), 650);
+        window.setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          setShowResults(true);
+        }, 650);
       }
     }, 720);
   };
@@ -214,13 +217,14 @@ export default function AssessmentPage() {
     return (
       <main className="assessment-shell results-shell">
         <div className="confetti" aria-hidden="true">
-          {Array.from({ length: 34 }).map((_, index) => (
+          {Array.from({ length: 90 }).map((_, index) => (
             <i
               key={index}
               style={
                 {
                   "--i": index,
                   left: `${(index * 29) % 100}%`,
+                  "--drift": `${((index * 37) % 121) - 60}px`,
                 } as React.CSSProperties
               }
             />

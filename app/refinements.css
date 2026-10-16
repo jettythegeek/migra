@@ -807,10 +807,10 @@
 }
 @media (max-width: 620px) {
   .about {
-    padding-block: 76px;
+    padding: 76px 0 28px;
   }
   .explore {
-    padding-block: 76px;
+    padding: 48px 0 76px;
   }
   .how {
     padding: 76px 0 68px;

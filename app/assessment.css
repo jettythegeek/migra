@@ -739,18 +739,19 @@
   cursor: pointer;
 }
 .confetti {
-  position: absolute;
-  inset: 80px 0 auto;
-  height: 520px;
+  position: fixed;
+  z-index: 50;
+  inset: 0;
+  height: 100vh;
   pointer-events: none;
   overflow: hidden;
 }
 .confetti i {
   --color: #00cab0;
   position: absolute;
-  top: -20px;
-  width: 8px;
-  height: 15px;
+  top: -8vh;
+  width: 9px;
+  height: 18px;
   background: var(--color);
   animation: fall calc(2.8s + (var(--i) % 5) * 0.22s) ease-in
     calc((var(--i) % 7) * 0.08s) both;
@@ -766,8 +767,11 @@
   --color: #f4b95f;
 }
 @keyframes fall {
+  12% {
+    opacity: 1;
+  }
   to {
-    transform: translateY(480px) rotate(560deg);
+    transform: translate(var(--drift), 112vh) rotate(720deg);
     opacity: 0;
   }
 }
