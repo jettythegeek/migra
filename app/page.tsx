@@ -29,7 +29,7 @@ import {
   XLogo,
 } from "@phosphor-icons/react";
 import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const paths = [
   {
@@ -57,6 +57,39 @@ const paths = [
     score: "3 routes",
   },
 ];
+
+function PathScore({ score, active }: { score: string; active: boolean }) {
+  const target = Number.parseInt(score, 10);
+  const isPercent = score.includes("%");
+  const [value, setValue] = useState(active ? 0 : target);
+
+  useEffect(() => {
+    if (!active) {
+      setValue(target);
+      return;
+    }
+    setValue(0);
+    let frame = 0;
+    const frames = 42;
+    const timer = window.setInterval(() => {
+      frame += 1;
+      setValue(Math.round((target * frame) / frames));
+      if (frame >= frames) window.clearInterval(timer);
+    }, 24);
+    return () => window.clearInterval(timer);
+  }, [active, target]);
+
+  const sweep = isPercent ? target * 3.6 : 270;
+  return (
+    <strong
+      className={`path-score ${active ? "animate" : ""}`}
+      style={{ "--path-sweep": `${sweep}deg` } as React.CSSProperties}
+    >
+      <span>{value}</span>
+      <small>{isPercent ? "%" : "routes"}</small>
+    </strong>
+  );
+}
 
 const destinations = [
   {
@@ -451,6 +484,13 @@ export default function Home() {
   const [menu, setMenu] = useState(false);
   const [active, setActive] = useState(0);
   const [faq, setFaq] = useState(0);
+  useEffect(() => {
+    const timer = window.setTimeout(
+      () => setActive((current) => (current + 1) % paths.length),
+      5000,
+    );
+    return () => window.clearTimeout(timer);
+  }, [active]);
   return (
     <main>
       <nav className="nav wrap">
@@ -571,7 +611,10 @@ export default function Home() {
                     <b>{p.title}</b>
                     <small>{p.text}</small>
                   </p>
-                  <strong>{p.score}</strong>
+                  <PathScore score={p.score} active={active === i} />
+                  {active === i && (
+                    <i className="path-timer" aria-hidden="true" />
+                  )}
                 </button>
               );
             })}

@@ -441,11 +441,13 @@ button {
   border-radius: 18px;
   padding: 18px;
   display: grid;
-  grid-template-columns: 24px 28px 1fr auto;
+  grid-template-columns: 24px 28px 1fr 58px;
   gap: 12px;
   align-items: center;
   text-align: left;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 .path-list button.active {
   background: var(--navy);
@@ -462,6 +464,79 @@ button {
 .path-list b,
 .path-list small {
   display: block;
+}
+.path-score {
+  --path-fill: var(--path-sweep);
+  width: 54px;
+  height: 54px;
+  display: grid !important;
+  grid-template-columns: auto auto;
+  place-content: center;
+  gap: 1px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--teal) var(--path-fill),
+    #dce5e4 var(--path-fill)
+  );
+  color: var(--navy) !important;
+}
+.path-score::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: white;
+}
+.path-score > span,
+.path-score > small {
+  position: relative;
+  z-index: 1;
+}
+.path-score > span {
+  font-size: 12px;
+  font-weight: 900;
+}
+.path-score > small {
+  margin: 0;
+  align-self: center;
+  color: var(--muted);
+  font-size: 7px;
+  font-weight: 800;
+}
+.path-list button.active .path-score {
+  color: var(--navy) !important;
+}
+.path-score.animate {
+  animation: path-ring-fill 1.05s ease-out both;
+}
+.path-timer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 4px;
+  background: var(--teal);
+  animation: path-tab-timer 5s linear forwards;
+}
+@property --path-fill {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes path-ring-fill {
+  from {
+    --path-fill: 0deg;
+  }
+  to {
+    --path-fill: var(--path-sweep);
+  }
+}
+@keyframes path-tab-timer {
+  to {
+    width: 100%;
+  }
 }
 .path-list small {
   font-size: 9px;
