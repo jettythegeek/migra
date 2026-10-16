@@ -107,9 +107,9 @@
   gap: 14px;
 }
 .destination-set article {
-  width: 318px;
-  min-height: 310px;
-  padding: 28px;
+  width: 286px;
+  min-height: 246px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
   border: 1px solid var(--line);
@@ -120,19 +120,25 @@
   display: flex;
   align-items: center;
   gap: 13px;
-  padding-bottom: 22px;
+  padding-bottom: 15px;
   border-bottom: 1px solid var(--line);
 }
 .destination-title > span {
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 34px;
   display: grid;
   place-items: center;
   flex: none;
-  border-radius: 14px;
-  background: #eef8f7;
-  font-size: 23px;
-  line-height: 1;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+}
+.destination-title > span img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 .destination-title h3 {
   margin: 0;
@@ -141,8 +147,8 @@
 }
 .destination-routes {
   display: grid;
-  gap: 15px;
-  padding: 23px 0;
+  gap: 11px;
+  padding: 16px 0;
 }
 .destination-routes > div {
   display: flex;
@@ -171,7 +177,7 @@
 }
 .destination-routes b {
   color: var(--navy);
-  font-size: 11px;
+  font-size: 10px;
   line-height: 1.45;
 }
 .destination-set article > a {
@@ -183,7 +189,7 @@
   padding-bottom: 5px;
   border-bottom: 1px solid var(--teal);
   color: var(--navy);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
 }
 @keyframes destination-slide {

@@ -61,12 +61,12 @@ const paths = [
 const destinations = [
   {
     country: "Canada",
-    flag: "🇨🇦",
+    flagCode: "ca",
     routes: [{ type: "Work", name: "Skilled Worker Pathway" }],
   },
   {
     country: "United Kingdom",
-    flag: "🇬🇧",
+    flagCode: "gb",
     routes: [
       { type: "Work", name: "Skilled Worker Route" },
       { type: "Family", name: "Family Route" },
@@ -74,7 +74,7 @@ const destinations = [
   },
   {
     country: "Ireland",
-    flag: "🇮🇪",
+    flagCode: "ie",
     routes: [
       { type: "Work", name: "Critical Skills Employment Permit" },
       { type: "Study", name: "Study Route" },
@@ -82,12 +82,12 @@ const destinations = [
   },
   {
     country: "Sweden",
-    flag: "🇸🇪",
+    flagCode: "se",
     routes: [{ type: "Work", name: "Work Permit Route" }],
   },
   {
     country: "Australia",
-    flag: "🇦🇺",
+    flagCode: "au",
     routes: [
       { type: "Work", name: "Skilled Independent Visa" },
       { type: "Study", name: "Study Route" },
@@ -95,12 +95,12 @@ const destinations = [
   },
   {
     country: "Netherlands",
-    flag: "🇳🇱",
+    flagCode: "nl",
     routes: [{ type: "Work", name: "Highly Skilled Migrant Route" }],
   },
   {
     country: "Estonia",
-    flag: "🇪🇪",
+    flagCode: "ee",
     routes: [{ type: "Work", name: "Work Permit Route" }],
   },
 ];
@@ -687,7 +687,15 @@ export default function Home() {
                 {destinations.map((destination) => (
                   <article key={destination.country}>
                     <div className="destination-title">
-                      <span>{destination.flag}</span>
+                      <span>
+                        <img
+                          src={`https://flagcdn.com/w80/${destination.flagCode}.png`}
+                          alt=""
+                          width="40"
+                          height="27"
+                          loading="lazy"
+                        />
+                      </span>
                       <h3>{destination.country}</h3>
                     </div>
                     <div className="destination-routes">
