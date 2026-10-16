@@ -595,62 +595,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="destinations" id="destinations">
-        <div className="wrap">
-          <header className="destinations-head">
-            <div>
-              <span>POPULAR DESTINATIONS</span>
-              <h2>Migration pathways we actively support</h2>
-            </div>
-            <p>
-              Real programs our specialists work with today — message us and
-              we&apos;ll confirm what fits your profile.
-            </p>
-          </header>
-          <div className="destination-grid">
-            {destinations.map((destination, index) => (
-              <article
-                className={index < 3 ? "destination-featured" : ""}
-                key={destination.country}
-              >
-                <div className="destination-title">
-                  <span>
-                    <MapPin size={23} weight="duotone" />
-                  </span>
-                  <h3>{destination.country}</h3>
-                </div>
-                <div className="destination-routes">
-                  {destination.routes.map((route) => {
-                    const RouteIcon =
-                      route.type === "Study"
-                        ? PhosphorGraduationCap
-                        : route.type === "Family"
-                          ? UsersThree
-                          : PhosphorBriefcase;
-                    return (
-                      <div key={route.name}>
-                        <RouteIcon size={19} weight="duotone" />
-                        <p>
-                          <small>{route.type}</small>
-                          <b>{route.name}</b>
-                        </p>
-                      </div>
-                    );
-                  })}
-                </div>
-                <a
-                  href="https://wa.me/2348153955718?text=Hi%2C%20I%27d%20like%20to%20ask%20about%20my%20migration%20eligibility."
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Ask about eligibility
-                  <PhosphorArrowRight size={17} weight="bold" />
-                </a>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
       <section className="explore wrap" id="explore">
         <header className="explore-intro">
           <div>
@@ -734,6 +678,70 @@ export default function Home() {
               />
             </div>
           </article>
+        </div>
+      </section>
+      <section className="destinations" id="destinations">
+        <div className="wrap">
+          <header className="destinations-head">
+            <div>
+              <span>WHERE COULD YOU GO?</span>
+              <h2>Real routes. Real places. A clearer next move.</h2>
+            </div>
+            <p>
+              Explore the work, study and family pathways Migra currently
+              supports. Tell us about you, and we&apos;ll help narrow the list.
+            </p>
+          </header>
+        </div>
+        <div className="destination-window">
+          <div className="destination-track">
+            {[0, 1].map((copy) => (
+              <div
+                className="destination-set"
+                aria-hidden={copy === 1}
+                key={copy}
+              >
+                {destinations.map((destination) => (
+                  <article key={destination.country}>
+                    <div className="destination-title">
+                      <span>
+                        <MapPin size={23} weight="duotone" />
+                      </span>
+                      <h3>{destination.country}</h3>
+                    </div>
+                    <div className="destination-routes">
+                      {destination.routes.map((route) => {
+                        const RouteIcon =
+                          route.type === "Study"
+                            ? PhosphorGraduationCap
+                            : route.type === "Family"
+                              ? UsersThree
+                              : PhosphorBriefcase;
+                        return (
+                          <div key={route.name}>
+                            <RouteIcon size={19} weight="duotone" />
+                            <p>
+                              <small>{route.type}</small>
+                              <b>{route.name}</b>
+                            </p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <a
+                      href="https://wa.me/2348153955718?text=Hi%2C%20I%27d%20like%20to%20ask%20about%20my%20migration%20eligibility."
+                      target="_blank"
+                      rel="noreferrer"
+                      tabIndex={copy === 1 ? -1 : undefined}
+                    >
+                      Check this route
+                      <PhosphorArrowRight size={17} weight="bold" />
+                    </a>
+                  </article>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
       <section className="family">
