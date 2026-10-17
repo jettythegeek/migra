@@ -879,34 +879,34 @@ export default function Home() {
           <header>
             <ShieldCheck />
             <span>
-              <b>Why Migra suggested this</b>
-              <small>How this recommendation was made</small>
+              <b>Recommendation breakdown</b>
+              <small>What supports this pathway for your profile</small>
             </span>
-            <em>SAMPLE RESULT</em>
+            <em>PROFILE ANALYSIS</em>
           </header>
           <h3>
-            Your work experience strengthens this option. Your language score
-            could still change the result.
+            Your work experience aligns with this pathway. Confirm your language
+            score to complete the assessment.
           </h3>
           <label>
             <BadgeCheck />
             <span>
-              <b>Rules checked</b>
-              <small>Matched against official programme requirements</small>
+              <b>Programme requirements</b>
+              <small>Checked against current official criteria</small>
             </span>
           </label>
           <label>
             <FileCheck2 />
             <span>
-              <b>What you told us</b>
-              <small>8 details from your profile shaped this result</small>
+              <b>Profile evidence</b>
+              <small>8 profile factors support this assessment</small>
             </span>
           </label>
           <label className="uncertain">
             <CircleAlert />
             <span>
-              <b>What needs confirming</b>
-              <small>Your language score and credential assessment</small>
+              <b>Required verification</b>
+              <small>Language results and credential assessment</small>
             </span>
           </label>
         </div>
